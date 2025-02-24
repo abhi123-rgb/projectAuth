@@ -3,7 +3,7 @@ module.exports = {
         {
             name: "ProjectAuth",
             script: "npm",
-            args: "run dev",
+            args: "start",
             env: {
                 NODE_ENV: "development",
                 ENV_VAR1: "environment-variable",
