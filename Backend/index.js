@@ -8,7 +8,7 @@ const Employee = require("./models/employeeModel");
 const { ManagersignupSchema } = require("./utils/validator");
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001 ;
 
 const dbConnect = require("./utils/dbConnnect");
 const adminRoute = require("./routes/AdminRoute");
@@ -110,6 +110,6 @@ app.delete("/deleteEmployee/:id", authorize, async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT,"0.0.0.0", () => {
   console.log(`App started listening at http://localhost:${PORT}`);
 });
