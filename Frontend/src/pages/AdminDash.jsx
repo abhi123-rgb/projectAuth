@@ -110,7 +110,7 @@ const AdminDash = () => {
     getAllEmployee();
     getAllAdmins();
 
-  }, []);
+  }, [employees,allEmployee]);
 
   useEffect(() => {
     getUserInfo();
@@ -144,7 +144,7 @@ const AdminDash = () => {
               <span className='text-6xl font-bold'>{adminCount}</span>
               <p className='text-lg'>Admin Users</p></div>
           </div>
-          <div className='grid grid-cols-2 gap-x-4 max-[900px]:grid-cols-1 mt-4'>
+          <div className='grid grid-cols-2 gap-4 max-[900px]:grid-cols-1 mt-4'>
             <div>
               <h2 className='text-lg font-medium mb-3'>Admin's Employee</h2>
               <DataTable employees={employees} handleDelete={handleDelete} />

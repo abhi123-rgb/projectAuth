@@ -13,6 +13,7 @@ managerRoute.post("/managersignup",validate(ManagersignupSchema), async (req, re
   try {
     const { fullName, email, password, role } = req.body;
 
+    console.log(fullName,email,password,role);
 
     if(role != "Manager"){
         return res.json({
@@ -69,9 +70,10 @@ managerRoute.post("/managersignin",validate(signinSchema), async (req, res) => {
           }
 
         const existingUser = await Employee.findOne({ email: email });
+        console.log(existingUser)
 
-        if(!existingUser) {
-            return res.json({
+        if(existingUser == null) {
+            return res.status(401).json({
                 message: "User not found! signup first",
             })
         }

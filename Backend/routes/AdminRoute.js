@@ -69,11 +69,11 @@ adminRoute.post("/adminsignin", validate(signinSchema), async (req, res) => {
 
     const existingUser = await User.findOne({ email: email });
 
-    if (!existingUser) {
-      return res.json({
-        message: "User not found! signup first",
-      });
-    }
+    if(existingUser == null) {
+      return res.status(401).json({
+          message: "User not found! signup first",
+      })
+  }
 
     if (existingUser?.role != "Admin") {
       return res

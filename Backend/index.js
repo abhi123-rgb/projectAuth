@@ -9,12 +9,17 @@ const { ManagersignupSchema } = require("./utils/validator");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT ;
+const path = require("path");
+
+const _dirname = path.dirname("");
+const buildpath = path.join(_dirname,"../Frontend/build");
 
 const dbConnect = require("./utils/dbConnnect");
 const adminRoute = require("./routes/AdminRoute");
 const managerRoute = require("./routes/ManagerRoute");
 const { mongoose } = require("mongoose");
 
+app.use(express.static(buildpath));
 app.use(express.json());
 app.use(cors({
   origin:"*",

@@ -71,8 +71,10 @@ const ManagerDash = () => {
   useEffect(() => {
     getEmployees();
     
-  },[]);
+  },[employees]);
 
+  const employeeCount = employees?.filter(allEmployee => allEmployee.role == "Employee").length;
+  console.log(employeeCount)
 
   return (
     <>
@@ -83,7 +85,12 @@ const ManagerDash = () => {
       <div className='p-6'>
         <h1 className='text-2xl font-semibold mb-3'>Welcome, {capitalise(userInfo?.fullName)}</h1>
         <div className='py-3'>
-          <div className='grid grid-cols-1 gap-x-4'>
+        <div className='grid grid-cols-3 gap-3 py-4 max-[600px]:grid-cols-1'>
+            <div className='p-6 rounded-lg bg-linear-to-r from-cyan-200 via-blue-400 to-indigo-600'>
+              <span className='text-6xl font-bold'>{employeeCount}</span>
+              <p className='text-lg'>Manager Users</p></div>
+          </div>
+          <div className='grid grid-cols-1 gap-4 mt-4'>
             <div>
               <h2 className='text-lg font-medium mb-3'>Manager's Employee</h2>
               <DataTable employees={employees} handleDelete={handleDelete} />
