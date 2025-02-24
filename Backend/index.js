@@ -1,10 +1,11 @@
 const dotenv = require("dotenv").config();
 const bcrypt = require("bcrypt");
+const cors = require("cors");
 const validate = require("./middleware/validateMiddleware");
 const authorize = require("./middleware/authMiddleware");
 const RoleAuth = require("./middleware/roleAuthMiddleware");
 const Employee = require("./models/employeeModel");
-const { signupSchema } = require("./utils/validator");
+const { ManagersignupSchema } = require("./utils/validator");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT;
@@ -15,6 +16,9 @@ const managerRoute = require("./routes/ManagerRoute");
 const { mongoose } = require("mongoose");
 
 app.use(express.json());
+app.use(cors({
+  origin:"*",
+}));
 app.use("/", adminRoute);
 app.use("/", managerRoute);
 
@@ -27,7 +31,7 @@ db.on("error", (err) => {
   console.log("MongoDB connection error :", err);
 });
 
-app.post("/createEmployees", authorize,validate(signupSchema), async (req, res) => {
+app.post("/createEmployees", authorize,validate(ManagersignupSchema), async (req, res) => {
   try {
     const { user } = req.user;
 

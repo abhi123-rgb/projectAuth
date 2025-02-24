@@ -3,15 +3,16 @@ const express = require("express");
 const Employee = require("../models/employeeModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { signupSchema, signinSchema } = require("../utils/validator");
+const { ManagersignupSchema, signinSchema } = require("../utils/validator");
 const validate = require("../middleware/validateMiddleware");
 const authorize = require('../middleware/authMiddleware');
 const RoleAuth = require("../middleware/roleAuthMiddleware");
 const managerRoute = express.Router();
 
-managerRoute.post("/managersignup",validate(signupSchema), async (req, res) => {
+managerRoute.post("/managersignup",validate(ManagersignupSchema), async (req, res) => {
   try {
     const { fullName, email, password, role } = req.body;
+
 
     if(role != "Manager"){
         return res.json({
@@ -21,7 +22,7 @@ managerRoute.post("/managersignup",validate(signupSchema), async (req, res) => {
 
     const existingUser = await Employee.findOne({ email: email });
     
-    if (existingUser?.email == email && existingUser?.fullName == fullName) {
+    if (existingUser) {
         return res.json({
             message: "User Already exists!",
         });
