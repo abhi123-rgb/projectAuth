@@ -8,7 +8,7 @@ const Employee = require("./models/employeeModel");
 const { ManagersignupSchema } = require("./utils/validator");
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3001 ;
+const PORT = process.env.PORT ;
 
 const dbConnect = require("./utils/dbConnnect");
 const adminRoute = require("./routes/AdminRoute");
