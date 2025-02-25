@@ -110,7 +110,7 @@ const AdminDash = () => {
     getAllEmployee();
     getAllAdmins();
 
-  }, [employees,allEmployee]);
+  }, [employees, allEmployee]);
 
   useEffect(() => {
     getUserInfo();

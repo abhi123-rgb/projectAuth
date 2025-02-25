@@ -28,36 +28,36 @@ const DataTable = ({ employees, handleDelete }) => {
                     </thead>
                     <tbody>
                         {employees?.length !== 0 ?
-                         employees?.map(employee =>
+                            employees?.map(employee =>
 
-                            <tr 
-                            key={count}
-                            className="bg-white border-b border-gray-200 hover:bg-gray-50 text-gray-900 ">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                    {count++}
-                                </th>
-                                <td className="px-6 py-4">
-                                    {employee.fullName}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {employee.role}
-                                </td>
-                                <td className="px-6 py-4">
-                                    {employee.email}
-                                </td>
-                                <td className="px-6 py-4 text-right">
-                                    <a
-                                        onClick={() => handleDelete(employee._id)}
-                                        className="font-medium text-blue-600 cursor-pointer hover:underline">Delete</a>
-                                </td>
-                            </tr>
-                        ) : (
-                            <tr className="bg-white border-b border-gray-200 hover:bg-gray-50 text-gray-900 text-center">
-                                <td colSpan={5} className='py-5 text-xl'>No Data Available</td>
-                            </tr>
-                        )} 
-                        
-                         
+                                <tr
+                                    key={count}
+                                    className="bg-white border-b border-gray-200 hover:bg-gray-50 text-gray-900 ">
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                        {count++}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {employee.fullName}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {employee.role}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {employee.email}
+                                    </td>
+                                    <td className="px-6 py-4 text-right">
+                                        <a
+                                            onClick={() => handleDelete(employee._id)}
+                                            className="font-medium text-blue-600 cursor-pointer hover:underline">Delete</a>
+                                    </td>
+                                </tr>
+                            ) : (
+                                <tr className="bg-white border-b border-gray-200 hover:bg-gray-50 text-gray-900 text-center">
+                                    <td colSpan={5} className='py-5 text-xl'>No Data Available</td>
+                                </tr>
+                            )}
+
+
                     </tbody>
                 </table>
             </div>
