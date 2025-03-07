@@ -96,7 +96,7 @@ export default function Signin() {
     <>
       <div className="grid grid-cols-2 h-screen max-[800px]:grid-cols-1">
         <div className="max-[800px]:hidden">
-          <img src="/img1.jpg" alt="imgAssets" className="w-full h-full object-center" />
+          <img src="/img1.jpg" alt="imgAssets" className="w-full h-full object-cover object-center" />
         </div>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
