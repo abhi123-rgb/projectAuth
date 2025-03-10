@@ -111,7 +111,7 @@ app.delete("/deleteEmployee/:id", authorize, async (req, res) => {
       });
     }
 
-    res.status(201).json({
+    res.status(200).json({
       message: "employee deleted successfully",
     });
   } catch (error) {
