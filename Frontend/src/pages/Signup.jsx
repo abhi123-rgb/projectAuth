@@ -9,7 +9,7 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [accessCode, setAccessCode] = useState("");
   const [error, setError] = useState("");
-  const [signUpRole, setSignUpRole] = useState("Manager");
+  const [signUpRole, setSignUpRole] = useState("");
 
   const navigate = useNavigate();
 
@@ -28,6 +28,11 @@ export default function Signup() {
 
     if (!password) {
       setError("Please enter the password");
+      return;
+    }
+
+    if (!signUpRole) {
+      setError("Please select the role");
       return;
     }
 
@@ -59,6 +64,7 @@ export default function Signup() {
     }
   }
 
+  console.log(signUpRole);
   const handleAdminSignup = async (e) => {
     e.preventDefault();
 
@@ -81,7 +87,12 @@ export default function Signup() {
       setError("Please enter the AccessCode");
       return;
     }
-    console.log(accessCode);
+
+    if (!signUpRole) {
+      setError("Please select the role");
+      return;
+    }
+ 
 
     setError("");
 

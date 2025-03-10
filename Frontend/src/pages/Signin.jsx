@@ -9,7 +9,7 @@ export default function Signin() {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signInRole, setSignInRole] = useState("Manager");
+  const [signInRole, setSignInRole] = useState("");
 
   const navigate = useNavigate();
 
@@ -26,6 +26,13 @@ export default function Signin() {
       setError("please enter the passsword");
       return;
     }
+
+
+    if (!signInRole) {
+      setError("Please select the role");
+      return;
+    }
+ 
 
     setError("");
 
@@ -66,6 +73,12 @@ export default function Signin() {
 
     if (!password) {
       setError("please enter the passsword");
+      return;
+    }
+
+
+    if (!signInRole) {
+      setError("Please select the role");
       return;
     }
 
