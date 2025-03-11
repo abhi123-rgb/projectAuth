@@ -14,9 +14,9 @@ const ManagerDash = () => {
   const [openModal, setOpenModal] = useState(false);
   const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
-  
+
   const getUserInfo = async () => {
-    
+
     try {
       const response = await axiosInstance.get("/getmanagerInfo");
       console.log(response.data.role);
@@ -49,13 +49,13 @@ const ManagerDash = () => {
     }
   };
 
-  const handleDelete = async(id) => {
+  const handleDelete = async (id) => {
     try {
       const response = await axiosInstance.delete(`/deleteEmployee/${id}`);
-      if(response) {
+      if (response) {
         console.log(response);
       }
-    }catch(error) {
+    } catch (error) {
       console.log(error);
       console.log("An unexpected error occured. Please try again.");
     }
@@ -64,28 +64,28 @@ const ManagerDash = () => {
 
   useEffect(() => {
     getUserInfo();
-   
-    return () => {}
+
+    return () => { }
   }, []);
 
   useEffect(() => {
     getEmployees();
-    
-  },[employees]);
+
+  }, [employees]);
 
   const employeeCount = employees?.filter(allEmployee => allEmployee.role == "Employee").length;
   console.log(employeeCount)
 
   return (
     <>
-      <Navbar 
-      userInfo={userInfo}
+      <Navbar
+        userInfo={userInfo}
       />
-      
+
       <div className='p-6'>
         <h1 className='text-2xl font-semibold mb-3'>Welcome, {capitalise(userInfo?.fullName)}</h1>
         <div className='py-3'>
-        <div className='grid grid-cols-3 gap-3 py-4 max-[600px]:grid-cols-1'>
+          <div className='grid grid-cols-3 gap-3 py-4 max-[600px]:grid-cols-1'>
             <div className='p-6 rounded-lg bg-linear-to-r from-cyan-200 via-blue-400 to-indigo-600'>
               <span className='text-6xl font-bold'>{employeeCount}</span>
               <p className='text-lg'>Manager Users</p></div>
@@ -95,7 +95,7 @@ const ManagerDash = () => {
               <h2 className='text-lg font-medium mb-3'>Manager's Employee</h2>
               <DataTable employees={employees} handleDelete={handleDelete} />
             </div>
-            
+
           </div>
 
         </div>
@@ -120,7 +120,7 @@ const ManagerDash = () => {
         className="max-w-[80%] sm:max-w-[50%] max-h-3/4 bg-white rounded-md mx-auto mt-14 px-8 py-5 overflow-scroll no-scrollbar"
       >
         <AddEmployees
-          userInfo= {userInfo}
+          userInfo={userInfo}
           onClose={() => {
             setOpenModal(false)
           }}
